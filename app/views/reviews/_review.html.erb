@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(review) do %>
+  <div class="py-5 border-b border-gray-100">
+    <div class="pb-2">
+      <h3 class="text-gray-500"><%= review.created_at.to_fs(:long_ordinal) %></h3>
+      <blockquote>
+      <span class="font-semibold"><%= review.rating %>/5</span> - <span class="italic font-semibold"><%= review.body %></span>
+      <blockquote>
+    </div>
+    <div class="flex gap-5">
+      <% if review.user == current_user %>
+        <%= link_to "Edit", edit_sneaker_review_path(review.sneaker, review), class:'text-gray-500'  %>
+        <%= button_to "Delete", sneaker_review_path(review.sneaker, review), method: :delete, class:'text-red-500' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

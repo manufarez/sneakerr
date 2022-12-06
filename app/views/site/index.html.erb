@@ -1,0 +1,13 @@
+<h1 class="font-bold">Apple counter</h1>
+<div>
+  <div id="count">
+    <%= @count %> apples
+  </div>
+  <div class="flex gap-5">
+    <%= button_to "Add", add_path, class:"p-2 bg-blue-500 text-white rounded"%>
+    <%= button_to "Remove", remove_path, class:"p-2 bg-blue-500 text-white rounded"%>
+  </div>
+  <div id="log" class="mt-5">
+    log
+  </div>
+</div>

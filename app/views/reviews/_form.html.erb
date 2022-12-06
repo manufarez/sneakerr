@@ -1,0 +1,36 @@
+<%= form_with(model: [@sneaker, @review], class: "contents") do |form| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :rating %>: <span id="rating">1</span>
+    <%= form.range_field :rating, min: 1, max: 5, id:'range', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+
+<script>
+  var slider = document.getElementById("range");
+  var output = document.getElementById("rating");
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+</script>

@@ -1,0 +1,4 @@
+<%= turbo_frame_tag dom_id(@review) do %>
+  <%= link_to "Cancel", sneaker_path(@sneaker), class:'float-right'  %>
+  <%= render "form", review: @review %>
+<% end %>
